@@ -1,0 +1,10 @@
+# Audio Processing
+pyaudio
+numpy
+
+# Speech Recognition (Local Whisper - FREE!)
+openai-whisper
+pvporcupine
+
+# Utilities
+python-dotenv
