@@ -17,22 +17,14 @@ class STTModule:
                  picovoice_key: str = None,
                  whisper_model: str = None,
                  on_transcript: Callable[[str], None] = None):
-        """
-        Initialize the STT module.
         
-        Args:
-            picovoice_key: Picovoice access key for wake word detection
-            whisper_model: Whisper model size (tiny/base/small/medium/large)
-            on_transcript: Callback function for transcription results
-        """
         self.picovoice_key = picovoice_key or config.PICOVOICE_ACCESS_KEY
         self.whisper_model_name = whisper_model or config.WHISPER_MODEL
         self.on_transcript = on_transcript
         
-        # Load Whisper model (this will download on first use)
-        print(f"Loading Whisper model '{self.whisper_model_name}'...")
+        # Load Whisper model
         self.whisper_model = whisper.load_model(self.whisper_model_name)
-        print("✅ Whisper model loaded!")
+
         
         # Audio setup
         self.audio = pyaudio.PyAudio()
@@ -218,7 +210,7 @@ class STTModule:
         self.start_listening()
         start_time = time.time()
         
-        print("👂 Listening for wake word...")
+        print("Listening for wake word...")
         
         try:
             while self.is_listening:
